@@ -60,6 +60,16 @@ html, body {
                 height: 250px;
                 background: lightgreen;
                 margin: 2%;
+                text-align: center;
+                .image-box {
+                    display: inline;
+                    img {
+                        display: block;
+                        margin: 20px auto;
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
             }
         }
     }

@@ -49,7 +49,15 @@ html, body {
       width: 200px;
       height: 250px;
       background: lightgreen;
-      margin: 2%; }
+      margin: 2%;
+      text-align: center; }
+      .container main .candidates-list .candidate-info .image-box {
+        display: inline; }
+        .container main .candidates-list .candidate-info .image-box img {
+          display: block;
+          margin: 20px auto;
+          width: 100px;
+          height: 100px; }
   .container #spacer {
     height: 50px; }
 
