@@ -1,18 +1,25 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: arial; }
 
 html, body {
   height: 100%;
   width: 100%; }
 
 .container {
+  max-width: 720px;
   min-height: 100%;
+  margin: 0 auto;
   margin-bottom: -50px; }
   .container header {
     height: 50px; }
     .container header h1 {
-      display: inline-block; }
+      display: inline-block;
+      padding-left: 30px; }
+      @media screen and (max-width: 530px) {
+        .container header h1 {
+          display: block; } }
     .container header nav {
       float: right;
       margin-right: 50px;
@@ -28,7 +35,19 @@ html, body {
   .container main h3 {
     display: inline-block;
     height: 50px;
-    line-height: 50px; }
+    line-height: 50px;
+    padding-left: 30px; }
+    @media screen and (max-width: 530px) {
+      .container main h3 {
+        display: block; } }
+  .container main p {
+    color: grey;
+    font-size: 10px;
+    margin: 10px 0; }
+  .container main .content {
+    color: black;
+    font-size: 0.8em;
+    margin: 10px 0 30px 0; }
   .container main input {
     display: inline-block;
     float: right;
@@ -41,23 +60,33 @@ html, body {
     background-size: 12px;
     background-position: 6px 6px;
     border: 1px solid grey; }
+    @media screen and (max-width: 530px) {
+      .container main input {
+        display: block;
+        float: none;
+        margin: 0 auto; } }
   .container main .candidates-list {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap; }
     .container main .candidates-list .candidate-info {
-      width: 200px;
-      height: 250px;
+      width: 150px;
+      height: 200px;
       background: lightgreen;
       margin: 2%;
-      text-align: center; }
+      text-align: center;
+      box-shadow: 0 0 15px -2px black;
+      font-size: 0.6em;
+      padding: 10px; }
+      @media screen and (max-width: 370px) {
+        .container main .candidates-list .candidate-info {
+          width: 75%; } }
+      .container main .candidates-list .candidate-info p {
+        margin-top: 10px; }
       .container main .candidates-list .candidate-info .image-box {
-        display: inline; }
-        .container main .candidates-list .candidate-info .image-box img {
-          display: block;
-          margin: 20px auto;
-          width: 100px;
-          height: 100px; }
+        width: 80%;
+        height: 150px;
+        margin: 0 auto 10px auto; }
   .container #spacer {
     height: 50px; }
 
@@ -66,5 +95,86 @@ footer {
   text-align: center;
   background: lightseagreen;
   line-height: 50px; }
+
+/********* candidate reports page style **********/
+.candidate-data {
+  margin: 50px auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around; }
+  .candidate-data .large-img {
+    width: 30%; }
+    .candidate-data .large-img img {
+      width: 80%;
+      height: auto; }
+  .candidate-data div:nth-child(2), .candidate-data div:nth-child(3) {
+    width: 30%;
+    font-size: 0.8em; }
+
+.reports table {
+  text-align: center;
+  font-size: 12px;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 50px auto; }
+  .reports table th, .reports table td {
+    border: 1px solid grey; }
+  .reports table thead {
+    background: #9e9e9e; }
+    .reports table thead th {
+      height: 25px; }
+  .reports table tr:nth-child(2n+0) {
+    background: #c9c9c9; }
+  .reports table .open-modal {
+    width: 20px;
+    height: 20px;
+    float: right; }
+
+#modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(177, 176, 176, 0.884); }
+  #modal #modal-box {
+    position: relative;
+    background: white;
+    width: 60%;
+    height: min-content;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 0 12px 0px grey inset; }
+    #modal #modal-box h2 {
+      border-bottom: 1px solid grey; }
+    #modal #modal-box #close {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      border-radius: 50%;
+      font-size: 24px;
+      box-shadow: 0 4px 10px 0px grey;
+      line-height: 18px;
+      text-align: center;
+      cursor: pointer; }
+    #modal #modal-box p {
+      color: grey;
+      font-size: 10px; }
+    #modal #modal-box .content {
+      color: black;
+      font-size: 16px; }
+    #modal #modal-box div {
+      margin-top: 10px;
+      display: inline-block;
+      width: 47%;
+      vertical-align: top; }
+    #modal #modal-box #modal-notes {
+      color: black;
+      font-size: 12px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reports</title>
+    <link rel="stylesheet" href="../style/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Interviews Reports</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../index.html">Candidates</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <section class="candidate-data">
+                <div class="large-img">
+                    <img id="candidate-avatar" src="../img/search.svg" alt="candidate-image">
+                </div>
+                <div>
+                    <p>Name:</p>
+                    <p class="content" id="name">Name</p>
+                    <p>Email:</p>
+                    <p class="content" id="email">Email</p>
+                </div>
+                <div>
+                    <p>Date of birth:</p>
+                    <p class="content" id="date">Date of birth</p>
+                    <p>Education:</p>
+                    <p class="content" id="education">Education</p>
+                </div>
+            </section>
+
+            <section class="reports">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Interview date</th>
+                            <th>Status</th>
+                        </tr>
+                        <tbody>
+
+                        </tbody>
+                    </thead>
+                </table>
+            </section>
+
+        </main>
+
+        <div id="spacer"></div>
+    </div>
+    <footer>Copyright&copy;2018</footer>
+
+    <div id="modal">
+        <div id="modal-box">
+            <h2 id="modal-name">Candidate Name</h2>
+            <p id="close">&Cross;</p>
+            <div>
+                <p>Company:</p>
+                <p class="content" id="modal-company"></p>
+                <p>Iterview Date:</p>
+                <p class="content" id="modal-date"></p>
+                <p>Phase:</p>
+                <p class="content" id="modal-phase"></p>
+                <p>Status:</p>
+                <p class="content" id="modal-status"></p>
+            </div>
+            <div>
+                <p>Notes</p>
+                <p id="modal-notes"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dataModule.js"></script>
+    <script src="../js/UIModule.js"></script>
+    <script src="../js/MainModule.js"></script>
+    <script>
+
+        window.onload = mainModule.reportsPageHandler();
+    </script>
+
+</body>
+
+</html>
