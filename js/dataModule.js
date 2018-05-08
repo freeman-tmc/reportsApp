@@ -3,50 +3,61 @@
 var dataModule = (function () {
     'use strict'
 
-    //converting server data to local objects
+    // date conversion
+    function convertDate(date) {
+        var longForm = new Date(date);
+        var dateString = longForm.getDate() +'.'+ (longForm.getMonth() + 1) + '.'+ longForm.getFullYear();
+        return dateString;
+    }
+    // creating candidate data local objects
     function CandidateData(data) {
         this.avatar = data.avatar;
-        this.birthday = data.birthday;
+        this.birthday = convertDate(data.birthday);
         this.education = data.education;
         this.email = data.email;
         this.id = data.id;
         this.name = data.name;
     }
+    // creating reports data local objects
+    function ReportsData(data) {
+        this.id = data.id;
+        this.candidateId = data.candidateId;
+        this.candidateName = data.candidateName;
+        this.companyId = data.companyId;
+        this.companyName = data.companyName;
+        this.interviewDate = convertDate(data.interviewDate);
+        this.phase = data.phase;
+        this.status = data.status;
+        this.note = data.note;
+    }
 
+    
     function getData(query, callBack, method, header, postData) {
+        
         // default method if method is not set
         method = method || 'GET';
-        //response data container
-        var listOfCandidates = [];
         //creating ajax request
-        var xhtp = new XMLHttpRequest();
-        xhtp.onreadystatechange = function () {
+        var xhtr = new XMLHttpRequest();
+        xhtr.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 var result = JSON.parse(this.responseText);
-
-                //for each element of the result array, creates candidate object
-                for (var i = 0; i < result.length; i++) {
-                    var candidate = new CandidateData(result[i]);
-                    listOfCandidates.push(candidate);
-                }
-                //call callback function if is passed to getData function
-                if (callBack) {
-                    callBack(listOfCandidates);
-                }
+                //call to callback function which is passed to getData function
+                callBack(result);
             }
         }
         //set request header from header array
         if (header) {
-            xhtp.setRequestHeader(header[0], header[1]);
+            xhtr.setRequestHeader(header[0], header[1]);
         }
 
-        xhtp.open(method, 'http://localhost:3333/api/' + query, true);
-        xhtp.send(postData);
-        
+        xhtr.open(method, 'http://localhost:3333/api/' + query, true);
+        xhtr.send(postData);   
     }
 
     return {
-        getData: getData
+        getData: getData,
+        CandidateData: CandidateData,
+        ReportsData: ReportsData
     }
 
 })();
