@@ -1,4 +1,3 @@
-//this should be module for communication with json server
 
 var dataModule = (function () {
     'use strict'
@@ -6,9 +5,10 @@ var dataModule = (function () {
     // date conversion
     function convertDate(date) {
         var longForm = new Date(date);
-        var dateString = longForm.getDate() +'.'+ (longForm.getMonth() + 1) + '.'+ longForm.getFullYear();
+        var dateString = longForm.getDate() + '.' + (longForm.getMonth() + 1) + '.' + longForm.getFullYear();
         return dateString;
     }
+
     // creating candidate data local objects
     function CandidateData(data) {
         this.avatar = data.avatar;
@@ -18,6 +18,7 @@ var dataModule = (function () {
         this.id = data.id;
         this.name = data.name;
     }
+
     // creating reports data local objects
     function ReportsData(data) {
         this.id = data.id;
@@ -31,27 +32,21 @@ var dataModule = (function () {
         this.note = data.note;
     }
 
-    
-    function getData(query, callBack, method, header, postData) {
+    // collecting data from server
+    function getData(query, callBack) {
         
-        // default method if method is not set
-        method = method || 'GET';
-        //creating ajax request
+        // creating ajax request
         var xhtr = new XMLHttpRequest();
         xhtr.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 var result = JSON.parse(this.responseText);
-                //call to callback function which is passed to getData function
+                // call to callback function which is passed to getData function
                 callBack(result);
             }
         }
-        //set request header from header array
-        if (header) {
-            xhtr.setRequestHeader(header[0], header[1]);
-        }
 
-        xhtr.open(method, 'http://localhost:3333/api/' + query, true);
-        xhtr.send(postData);   
+        xhtr.open('GET', 'http://localhost:3333/api/' + query, true);
+        xhtr.send();   
     }
 
     return {
