@@ -1,12 +1,17 @@
 * {
-    margin:0;
+    margin: 0;
     padding: 0;
     font-family: arial;
 }
 
-html, body {
+html {
+    overflow-y: scroll;
     height: 100%;
     width: 100%;
+    body {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .container {
@@ -15,27 +20,38 @@ html, body {
     margin: 0 auto;
     margin-bottom: -50px;
     header {
-        height: 50px;
         h1 {
             display: inline-block;
             padding-left: 30px;
-            @media screen and (max-width: 530px) {
+            font-size: 1.5em;
+            margin-top: 30px;
+            @media screen and (max-width: 390px) {
                 display: block;
+                margin: 0 auto;
+                text-align: center;
+                padding: 0;
             }
         }
         nav {
             float: right;
             margin-right: 50px;
-            height: 50px;
+            margin-top: 30px;
+            height: 1.5em;
+            @media screen and (max-width: 390px) {
+                float: none;
+                margin: 30px auto;
+                text-align: center;
+            }
             ul li {
                 list-style: none;
-                height: 50px;
+                margin: 0 auto;
             }
             a {
                 text-decoration: none;
-                background: lightseagreen;
-                padding: 10px 20px;
-                line-height: 50px;
+                padding: 5px 14px;
+                font-size: 0.7em;
+                border: 1px solid grey;
+                border-radius: 5px;
             }
         }
     }
@@ -47,6 +63,8 @@ html, body {
             padding-left: 30px;
             @media screen and (max-width: 530px) {
                 display: block;
+                padding: 0;
+                text-align: center;
             }
         }
         p {
@@ -60,12 +78,10 @@ html, body {
             margin: 10px 0 30px 0;
         }
         input {
-            display: inline-block;
             float: right;
             margin-right: 50px;
             border-radius: 5px;
             padding: 5px 5px 5px 20px;
-            background: red;
             background: url('../img/search.svg');
             background-repeat: no-repeat;
             background-size: 12px;
@@ -74,7 +90,7 @@ html, body {
             @media screen and (max-width: 530px) {
                 display: block;
                 float: none;
-                margin: 0 auto;
+                margin: 0 auto 30px auto;
             }
         }
         .candidates-list {
@@ -90,7 +106,7 @@ html, body {
                 box-shadow: 0 0 15px -2px rgb(0, 0, 0);
                 font-size: 0.6em;
                 padding: 10px;
-                @media screen and (max-width: 370px) {
+                @media screen and (max-width: 390px) {
                     width: 75%;
                 }
                 p {
@@ -123,9 +139,18 @@ footer {
     width: 80%;
     display: flex;
     justify-content: space-around;
+    @media screen and (max-width: 560px) {
+        display: block;
+        text-align: center;
+    }
     .large-img {
         width: 30%;
-        img {
+        @media screen and (max-width: 560px) {
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        #candidate-avatar {
             width: 80%;
             height: auto;
         }
@@ -133,33 +158,42 @@ footer {
     div:nth-child(2), div:nth-child(3) {
         width: 30%;
         font-size: 0.8em;
+        @media screen and (max-width: 560px) {
+            display: inline-block;
+            width: 48%;
+        }
+        @media screen and (max-width: 390px) {
+            width: 80%;
+        }
     }
 }
-
 
 .reports {
     table {
         text-align: center;
         font-size: 12px;
-        border-collapse: collapse;
+        border-radius: 15px;
         width: 80%;
         margin: 50px auto;
-        th, td {
-            border: 1px solid grey;
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
         }
         thead {
-            background: rgb(158, 158, 158);
+            background: rgb(129, 197, 123);
+            :last-child {
+                border-top-right-radius: 5px;
+            }
             th {
                 height: 25px;
             }
         }
         tr:nth-child(2n+0) {
-            background: rgb(201, 201, 201);
+            background: rgb(185, 255, 166);
         }
         .open-modal {
             width: 20px;
             height: 20px;
-            float: right;
+            margin: 0 auto;
         }
     }
     
@@ -212,6 +246,10 @@ footer {
             display: inline-block;
             width: 47%;
             vertical-align: top;
+            @media screen and (max-width: 390px) {
+                display: block;
+                width: 100%
+            }
         }
         #modal-notes {
             color: black;
